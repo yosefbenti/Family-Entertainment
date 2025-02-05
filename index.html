@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="app.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="mainContainer">
+        <div id="headerContainer">
+            <div id="leftContainer">
+                <p id="family">የቤተሰብ ጨዋታ</p>
+                
+                <div id="scoreDisplay">Score: 0</div>
+                <p id="message">Message: ***</p>
+
+                <button id="restartBtn" onclick="restartLevel()">Restart Level</button>
+                <button id="resetBtn" style="display: none;">Reset Game</button>
+                <button id="resetGameBtn">Reset Game</button>
+
+                <input type="file" id="imageInput" />
+                <button id="solveButton">Solve Puzzle</button>
+            </div>
+
+            <div id="rightContainer">
+                <h3><span id="level"></span></h3>
+                <p>Time left: <span id="timer">30</span> seconds</p>
+            </div>
+        </div>
+
+        <div id="bottomContainer">
+            <div id="container">
+                <!-- Puzzle or game content will go here -->
+              
+            </div>
+        </div>
+    </div>
+</body>
+</html>

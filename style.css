@@ -1,0 +1,31 @@
+#mainContainer{
+    height: 100vh;
+    width: 100vw;
+    margin-top: 10px;
+    display: flex;
+    gap: 5px;
+}
+#headerContainer{display: flex;
+flex-direction: column;}
+#leftContainer{display: flex;
+               flex-direction:column;
+               width: 60px;
+               gap: 5px;}
+#bottomContainer{display: flex;
+ flex-direction: column;}
+
+ #family{
+    writing-mode: vertical-rl;
+            text-orientation: mixed;
+            font-size: xx-large;
+            color: green;
+            margin-right: 5px;
+            margin-top: 25px;
+ }
+ #level{ color: green;
+}
+
+ #imageInput{
+    writing-mode: vertical-lr;
+            text-orientation: mixed;
+ }
