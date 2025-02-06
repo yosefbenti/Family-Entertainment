@@ -11,22 +11,19 @@
     <div id="mainContainer">
         <div id="headerContainer">
             <div id="leftContainer">
+                <span id="level"></span>
+                <p>ቀሪ ሰአት፡ <span id="timer"></span> ሰከንድ</p>
                 <p id="family">የቤተሰብ ጨዋታ</p>
+                <p id="familyIndicator">የ</p>
+                <p id="familyName"> </p> 
+                <p id="familyIndicator1">ቤተሰብ</p>
                 
-                <div id="scoreDisplay">Score: 0</div>
-                <p id="message">Message: ***</p>
-
-                <button id="restartBtn" onclick="restartLevel()">Restart Level</button>
-                <button id="resetBtn" style="display: none;">Reset Game</button>
-                <button id="resetGameBtn">Reset Game</button>
-
-                <input type="file" id="imageInput" />
-                <button id="solveButton">Solve Puzzle</button>
+                
             </div>
 
             <div id="rightContainer">
-                <h3><span id="level"></span></h3>
-                <p>Time left: <span id="timer">30</span> seconds</p>
+               
+                
             </div>
         </div>
 
@@ -34,6 +31,23 @@
             <div id="container">
                 <!-- Puzzle or game content will go here -->
               
+            </div>
+            <div id="footer">
+                
+
+                <button id="restartBtn" onclick="restartLevel()">Restart Level</button>
+                <button id="resetBtn" style="display: none;">Reset Game</button>
+                <button id="resetGameBtn">Reset Game</button>
+
+                <input type="file" id="imageInput" />
+                <button id="solveButton">Solve Puzzle</button>
+                <label for="familynameInput"> የቤተሰብ ስም ፡ </label>
+                <input type="text" id="familynameInput"></p>
+            <div id="playerMessage">
+                <span >ውጤት: <p id="scoreDisplay"> </p></span>
+                <span > መልእክት:-*** <p id="message"></p> </span>
+            </div>
+                 
             </div>
         </div>
     </div>

@@ -6,7 +6,10 @@
     gap: 5px;
 }
 #headerContainer{display: flex;
-flex-direction: column;}
+flex-direction: column;
+align-items: center;
+gap: 5px;
+}
 #leftContainer{display: flex;
                flex-direction:column;
                width: 60px;
@@ -22,10 +25,112 @@ flex-direction: column;}
             margin-right: 5px;
             margin-top: 25px;
  }
- #level{ color: green;
+ #level{ 
+    background-color: green;  /* Green background */
+    color: white;             /* White text color */
+    border-radius: 50%;       /* Circular shape */
+    padding: 10px 10px;       /* Padding for the circle size */
+    text-align: center;       /* Center align the text */
+    font-weight: bold;        /* Make text bold */
+    display: inline-block;    /* Allows the text to wrap inside the circle */
+    margin: 0;
+}
+#familyName{
+    background-color: green;  /* Green background */
+    color: white;             /* White text color */
+    border-radius: 50%;       /* Circular shape */
+    padding: 10px 10px;       /* Padding for the circle size */
+    text-align: center;       /* Center align the text */
+    font-weight: bold;        /* Make text bold */
+    display: inline-block;    /* Allows the text to wrap inside the circle */
+    margin: 0;
+}
+#timer{
+    background-color: green;  /* Green background */
+    color: white;             /* White text color */
+    border-radius: 50%;       /* Circular shape */
+    padding: 10px 20px;       /* Padding for the circle size */
+    text-align: center;       /* Center align the text */
+    font-weight: bold;        /* Make text bold */
+    display: inline-block;    /* Allows the text to wrap inside the circle */
+    margin: 0;
+    margin-left: 3px;
 }
 
+#familyIndicator{
+ 
+ height: 20px;
+ margin: 0;
+}
+#familyIndicator1{
+ 
+    height: 20px;
+    margin: 0;
+}
  #imageInput{
-    writing-mode: vertical-lr;
-            text-orientation: mixed;
+    /*writing-mode: vertical-lr;
+            //text-orientation: mixed;*/
  }
+
+ #footer{
+    display: flex;
+    
+ }
+ #restartBtn{
+    height: 20px;
+    margin-left: 5px;
+ }
+ #solveButton{
+    height: 20px;
+    margin-left: 5px;
+   
+ }
+ #resetGameBtn{
+    height: 20px;
+    margin-left: 5px;
+    
+ }
+ #resetBtn{
+    height: 20px;
+    margin-left: 5px;
+    
+ }
+ #message{
+    background-color: green;  /* Green background */
+    color: white;             /* White text color */
+    border-radius: 20%;       /* Circular shape */
+    padding: 10px 20px;       /* Padding for the circle size */
+    text-align: center;       /* Center align the text */
+    font-weight: bold;        /* Make text bold */
+    display: inline-block;    /* Allows the text to wrap inside the circle */
+    margin: 0;
+ }
+ #scoreDisplay{
+    background-color: green;  /* Green background */
+    color: white;             /* White text color */
+    border-radius: 50%;       /* Circular shape */
+    padding: 10px 20px;       /* Padding for the circle size */
+    text-align: center;       /* Center align the text */
+    font-weight: bold;        /* Make text bold */
+    display: inline-block;    /* Allows the text to wrap inside the circle */
+    margin: 0;
+ }
+ #familyName{
+    height: 20px;
+    margin-left: 5px;
+ }
+ #familynameInput{
+    height: 20px;
+    width: 70px;
+    margin-left: 5px;
+ }
+ span{
+    margin-left: 10px;
+ }
+#playerMessage{
+    display: flex;
+    gap: 10px;
+}
+#solveButton{
+    margin-right: 15px;
+}

@@ -4,6 +4,7 @@ const imageInput = document.querySelector("#imageInput");
 const solveButton = document.querySelector("#solveButton");
 const resetBtn = document.getElementById("resetBtn");
 
+
 const canvas = document.createElement("canvas");
 canvas.width = 1460;  // Canvas width
 canvas.height = 800;  // Canvas height
@@ -53,7 +54,7 @@ function startLevel() {
         totalTime = 90;
     }
 
-    document.getElementById("level").innerText = `Level ${currentLevel}`;
+    document.getElementById("level").innerText = `ደረጃ ${currentLevel}`;
     document.getElementById("timer").innerText = timeLeft;
     document.getElementById("restartBtn").style.display = "none";
 
@@ -471,3 +472,12 @@ startLevel();  // Start the level with appropriate timer
 
 startGame();  // Initialize the game and timer
 
+
+
+const familynameInput = document.querySelector('#familynameInput');
+const familyName = document.querySelector('#familyName');
+
+familynameInput.addEventListener("input", () => {
+   const familyGroupe = familynameInput.value;
+   familyName.textContent = familyGroupe;
+});
