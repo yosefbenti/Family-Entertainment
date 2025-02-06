@@ -68,8 +68,7 @@ gap: 5px;
     margin: 0;
 }
  #imageInput{
-    /*writing-mode: vertical-lr;
-            //text-orientation: mixed;*/
+    color: green;
  }
 
  #footer{
