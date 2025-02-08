@@ -1,22 +1,24 @@
-
 const container = document.querySelector("#container");
 const imageInput = document.querySelector("#imageInput");
 const solveButton = document.querySelector("#solveButton");
-const resetBtn = document.getElementById("resetBtn");
-
+//const resetBtn = document.getElementById("resetBtn");
+const nextLevel = document.getElementById("#nextLevel")
 
 const canvas = document.createElement("canvas");
-canvas.width = 1460;  // Canvas width
-canvas.height = 800;  // Canvas height
+canvas.width = 1400;  // Canvas width
+canvas.height = 750;  // Canvas height
 canvas.style.border = "4px solid pink";
 canvas.style.opacity = "1";
 container.appendChild(canvas);
 
 const ctx = canvas.getContext("2d");
 
+
+
+
 let isPuzzleSolved = false;  // Flag to track if the puzzle is solved manually
 
-let timeLimit = 30;  // Default time limit for Level 1 (30 seconds)
+let timeLimit = 60;  // Default time limit for Level 1 (30 seconds)
 let timer;
 let timeRemaining = timeLimit;
 
@@ -24,7 +26,7 @@ let pieces = [];
 let offsetX, offsetY, isDragging = false, currentPiece = null;
 let img = null;
 let cols = 3, rows = 3; // Default for Level 1 (3x3)
-let pieceWidth = 800 / cols, pieceHeight = 600 / rows;
+let pieceWidth = 700 / cols, pieceHeight = 700 / rows;
 
 let currentLevel = 1; // Starting level
 let timeLeft = timeLimit;
@@ -37,29 +39,38 @@ const maxScorePerLevel = 100; // Maximum points per level
 let totalTime; // Adjust this based on level
 let startTime; // Variable to track the start time
 let pointsEarned = 0 ;
+let gameOver = false;
 
+document.getElementById("level").innerText = `ዙር ${currentLevel}`;
 
 function startLevel() {
     clearInterval(timer);  // Clear any existing timer to prevent duplicates
+    
+    // Hide the Next Level button when the level starts
+    document.getElementById("nextLevel").style.display = "none";
 
     // Set time limit based on the current level
     if (currentLevel === 1) {
-        timeLeft = 30;  // Level 1: 30 seconds
-        totalTime = 30;
-    } else if (currentLevel === 2) {
-        timeLeft = 60;  // Level 2: 60 seconds
+        timeLeft = 60;  // Level 1: 30 seconds
         totalTime = 60;
+    } else if (currentLevel === 2) {
+        timeLeft = 120;  // Level 2: 60 seconds
+        totalTime = 120;
     } else if (currentLevel === 3) {
-        timeLeft = 90;  // Level 3: 90 seconds
-        totalTime = 90;
-    }
+        timeLeft = 300;  // Level 3: 90 seconds
+        totalTime = 300;
+    } else if (currentLevel === 4) {
+        timeLeft = 420;  // Level 3: 90 seconds
+        totalTime = 420;
+    } 
 
-    document.getElementById("level").innerText = `ደረጃ ${currentLevel}`;
+    document.getElementById("level").innerText = `ዙር ${currentLevel}`;
     document.getElementById("timer").innerText = timeLeft;
     document.getElementById("restartBtn").style.display = "none";
 
+    
     startTime = Date.now(); // Start the timer when the level begins
-
+   
     timer = setInterval(() => {
         if (timeLeft > 0) {
             timeLeft--;
@@ -68,8 +79,9 @@ function startLevel() {
             clearInterval(timer);
             failLevel();
         }
-    }, 1000);
+    }, 1000); 
 }
+
 
 
 // Reset the game to Level 1 (3x3 grid)
@@ -80,9 +92,9 @@ function resetGame() {
     pointsEarned = 0;
     cols = 3;
     rows = 3;
-    pieceWidth = 800 / cols;
-    pieceHeight = 600 / rows;
-    timeLeft = 30;  // Time limit for level 1
+    pieceWidth = 700 / cols;
+    pieceHeight = 700 / rows;
+    timeLeft = 60;  // Time limit for level 1
     isPuzzleSolved = false;  // Reset solved state
     pieces = [];  // Clear previous pieces
 
@@ -92,14 +104,14 @@ function resetGame() {
     drawWinnerZone();  // Redraw the winner zone
 
     // Reset the timer display and start the level
-    document.getElementById("level").innerText = "Level 1";
+    document.getElementById("level").innerText = "ዙር 1";
     document.getElementById("timer").innerText = timeLeft;
-    document.getElementById("message").innerText = "Solve the puzzle before time runs out!";
+    document.getElementById("message").innerText = "ሰአቱ ከማለቁ በፌት ዙሩን ማጠናቀቅ!";
     document.getElementById("restartBtn").style.display = "none";
-    document.getElementById("scoreDisplay").innerText ="Score : 0";
+    document.getElementById("scoreDisplay").innerText ="";
 
     // Reset pieces and draw them
-    startLevel();  // Start the level timer
+    //startLevel();  // Start the level timer
 }
 
 // Add event listener to the reset game button
@@ -120,7 +132,7 @@ function winLevel() {
     // Update score display in the HTML
     let scoreElement = document.getElementById("scoreDisplay");
     if (scoreElement) {
-        scoreElement.innerText = `Score: ${score}`;
+        scoreElement.innerText = `${score}`;
     } else {
         console.error("Score element not found in HTML");
     }
@@ -128,17 +140,25 @@ function winLevel() {
     // Display a message on the page instead of an alert
     let messageElement = document.getElementById("message");
     if (messageElement) {
-        messageElement.innerText = `You solved Level ${currentLevel}! Time Left: ${timeLeft}s. Points Earned: ${pointsEarned}. Total Score: ${score}`;
+        messageElement.innerText = `ዙር ${currentLevel} አልፈዋል! ቀሪ ሰአት: ${timeLeft} ሰከንድ. የተገኘ ነጥብ: ${pointsEarned}. ጠቅላላ ነጥብ: ${score}`;
     }
 
-    //currentLevel++; // Move to next level
-    if (currentLevel > 3) {
-        messageElement.innerText += ` Congratulations! You've completed all levels! Final Score: ${score}`;
-        return;
-    }
-
-    startLevel(); // Start next level
+    document.getElementById("nextLevel").style.display = "block"; // Show Next Level button
 }
+
+
+
+document.getElementById("nextLevel").addEventListener("click", () => {
+    if (currentLevel < 4) {
+        currentLevel++; // Move to the next level
+        document.getElementById("message").innerText = "";
+        setLevel(currentLevel); // Update the game with new level settings
+    } else {
+        document.getElementById("message").innerText = `እንኳን ደስ አሎት! ሁሉንም ዙሮች አልቀዋልአልቀዋል! ጠቅላላ ውጤት: ${score}`;
+        document.getElementById("nextLevel").style.display = "none"; // Hide next level button after completing all levels
+    }
+});
+
 
 
 function updateScoreDisplay(score) {
@@ -150,25 +170,20 @@ function updateScoreDisplay(score) {
     }
 }
 
-
+/*
 resetBtn.addEventListener("click", () => {
     currentLevel = 1;  // Reset to Level 1
     setLevel(1);
     resetBtn.style.display = "none"; // Hide the reset button
-});
+});*/
 
-function failLevel() {
-    clearInterval(timer);
-    document.getElementById("message").innerText = "Time's up! You didn't finish in time.";
-    document.getElementById("restartBtn").style.display = "block";
-}
 
 function restartLevel() {
     clearInterval(timer); // Ensure no duplicate timers
-    startLevel();
+    //startLevel();
 }
 
-startLevel();  // Start the first level
+//startLevel();  // Start the first level
 
 
 // Initialize game state after level selection
@@ -186,16 +201,16 @@ function startGame() {
 function drawWinnerZone() {
     ctx.strokeStyle = "white";  // Set stroke color to black
     ctx.lineWidth = 1;          // Set stroke width to 2px
-    ctx.strokeRect(0, 0, 800, 600);  // Draw the winner zone border
+    ctx.strokeRect(0, 0, 700, 700);  // Draw the winner zone border
 
     ctx.fillStyle = "MistyRose";
-    ctx.fillRect(0, 0, 800, 600);
+    ctx.fillRect(0, 0, 700, 700);
 
     // Draw vertical grid lines inside the winner zone
     for (let i = 1; i < cols; i++) {
         ctx.beginPath();
         ctx.moveTo(i * pieceWidth, 0);
-        ctx.lineTo(i * pieceWidth, 600);
+        ctx.lineTo(i * pieceWidth, 700);
         ctx.stroke();
     }
 
@@ -203,7 +218,7 @@ function drawWinnerZone() {
     for (let j = 1; j < rows; j++) {
         ctx.beginPath();
         ctx.moveTo(0, j * pieceHeight);
-        ctx.lineTo(800, j * pieceHeight);
+        ctx.lineTo(700, j * pieceHeight);
         ctx.stroke();
     }
 }
@@ -260,7 +275,7 @@ while (!validPositionFound) {
     randomY = Math.floor(Math.random() * Math.floor(canvas.height / pieceHeight)) * pieceHeight;
 
     // Ensure position is outside the winner zone and is not overlapping with other pieces
-    if ((randomX >= 800 || randomY >= 600) && !isPositionOccupied(randomX, randomY, pieceWidth, pieceHeight)) {
+    if ((randomX >= 700 || randomY >= 700) && !isPositionOccupied(randomX, randomY, pieceWidth, pieceHeight)) {
         validPositionFound = true;
     }
 }
@@ -284,12 +299,13 @@ imageInput.addEventListener("change", (event) => {
 
     const reader = new FileReader();
     reader.onload = (e) => {
+        
         img = new Image();
         img.onload = function () {
             pieceWidth = img.width / cols;
             pieceHeight = img.height / rows;
-
             pieces = [];
+
             for (let row = 0; row < rows; row++) {
                 for (let col = 0; col < cols; col++) {
                     let position = getRandomPositionOutsideWinnerZone();
@@ -305,15 +321,16 @@ imageInput.addEventListener("change", (event) => {
                     });
                 }
             }
+            
 
             drawPieces();  // Draw the pieces after loading the image
             startLevel();  // Start the timer and game when the image is loaded and the puzzle starts
+            showButton()
         };
         img.src = e.target.result;
     };
     reader.readAsDataURL(file);
 });
-
 
 
 
@@ -331,8 +348,12 @@ for (let i = 0; i < pieces.length; i++) {
 checkWin();
 }
 
+
+
 // Event listeners for dragging pieces
 canvas.addEventListener('mousedown', (e) => {
+    if(timeLeft > 0)
+    {
 const mouseX = e.offsetX;
 const mouseY = e.offsetY;
 
@@ -346,7 +367,9 @@ for (let i = 0; i < pieces.length; i++) {
         break;
     }
 }
+    }
 });
+
 
 document.addEventListener('mousemove', (e) => {
 if (isDragging && currentPiece) {
@@ -408,14 +431,14 @@ if (allCorrect && !isPuzzleSolved) {
 
     setTimeout(() => {
         if (isPuzzleSolved) {  
-            alert(`Congratulations! You completed Level ${currentLevel}!`);
+            alert(`ዙር ${currentLevel} አልቋል !`);
             winLevel()
-            if (currentLevel < 3) {  // Move to the next level
+            if (currentLevel < 4) {  // Move to the next level
                 currentLevel++;
                 setLevel(currentLevel);
                 startGame();
             } else {
-                alert("You have completed all levels! 🎉");
+                alert("ሁሉም የጨዋታ ዙሮች አልቀዋል! 🎉");
             }
         }
     }, 100);
@@ -437,7 +460,7 @@ isPuzzleSolved = true;  // Mark the puzzle as solved when the user manually solv
 clearInterval(timer);  // Stop the timer
 setTimeout(() => {
     if (isPuzzleSolved) {  // Only show if the puzzle is solved manually
-        alert("Congratulations! You completed the puzzle!");  // Show congratulatory message
+        alert("👌! ጨዋታውን ጨርሰዋል!");  // Show congratulatory message
     }
 }, 100);
 }
@@ -447,28 +470,43 @@ setTimeout(() => {
 solveButton.addEventListener("click", solvePuzzle);
 
 
+// Function to update level settings
 function setLevel(level) {
-currentLevel = level;
-document.getElementById("level").innerText = `Level ${currentLevel}`; // Update Level UI
+    
+    if (level === 1) {
+        cols = 3;
+        rows = 3;
+        timeLeft = 60;
+    } else if (level === 2) {
+        cols = 4;
+        rows = 4;
+        timeLeft = 120;
+    } else if (level === 3) {
+        cols = 5;
+        rows = 5;
+        timeLeft = 300;
+    } else if (level === 4) {
+        cols = 6;
+        rows = 6;
+        timeLeft = 420;
+    }
 
-if (level === 1) {
-    cols = 3;
-    rows = 3;
-    timeLimit = 30; // Level 1: 30 seconds
-} else if (level === 2) {
-    cols = 4;
-    rows = 4;
-    timeLimit = 60; // Level 2: 60 seconds
-} else if (level === 3) {
-    cols = 5;
-    rows = 5;
-    timeLimit = 90; // Level 3: 90 seconds
+    pieceWidth = 700 / cols;
+    pieceHeight = 700 / rows;
+
+    document.getElementById("level").innerText = `Level ${level}`;
+    document.getElementById("timer").innerText = timeLeft;
+    document.getElementById("nextLevel").style.display = "none"; // Hide Next Level button
+
+    // Reset game state for new level
+    pieces = [];
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    drawFullGrid();
+    drawWinnerZone();
+    //startLevel();
 }
 
-pieceWidth = 800 / cols;
-pieceHeight = 600 / rows;
-startLevel();  // Start the level with appropriate timer
-}
+
 
 startGame();  // Initialize the game and timer
 
@@ -481,3 +519,91 @@ familynameInput.addEventListener("input", () => {
    const familyGroupe = familynameInput.value;
    familyName.textContent = familyGroupe;
 });
+
+
+function failLevel() {
+    clearInterval(timer);
+    
+    document.getElementById("message").innerText = "ግዜው አልቋል! ወደ ቀጣይ ዙር የሚለውን ማስፈንጠሪያ ይጫኑ.";
+    document.getElementsByClassName("customImage").innerText ="block";
+    document.getElementById("restartBtn").style.display = "block";
+    document.getElementById("nextLevel").style.display = "block"; // Show Next Level button after failure
+}
+
+
+/*
+function failLevel() {
+    gameOver = true; // Mark game over
+    timeLeft = 0; // Ensure timeLeft is zero
+    isDragging = false; // Disable dragging
+
+    document.getElementById("message").innerText = "ጊዜው አልፎበታል! በድጋሚ ይሞክሩ.";
+    document.getElementById("restartBtn").style.display = "block";
+}*/
+
+
+
+
+
+const previewButton = document.createElement("button");
+previewButton.innerText = "ምስሉን 1 ግዜ ብቻ መመልከቻ";
+previewButton.style.position = "absolute";
+previewButton.style.top = "10px";
+previewButton.style.right = "10px";
+previewButton.style.padding = "10px";
+previewButton.style.backgroundColor = "#ff69b4";
+previewButton.style.color = "white";
+previewButton.style.border = "none";
+previewButton.style.cursor = "pointer";
+previewButton.style.borderRadius = "50px";
+container.appendChild(previewButton);
+
+let originalPuzzleState = null;
+let hasPreviewed = false; // Track if the preview has been used
+previewButton.addEventListener("mousedown", () => {
+    if (img && !hasPreviewed) {
+        
+        originalPuzzleState = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.drawImage(img, 0, 0, 700, 700);
+    }
+});
+
+previewButton.addEventListener("mouseup", () => {
+    if (originalPuzzleState) {
+       
+        ctx.putImageData(originalPuzzleState, 0, 0);
+    }
+});
+/*
+previewButton.addEventListener("mouseleave", () => {
+    if (originalPuzzleState) {
+        
+        ctx.putImageData(originalPuzzleState, 0, 0);
+    }
+});*/
+
+// Hide button after first use across all levels
+previewButton.addEventListener("click", function() {
+    
+    hasPreviewed = true; // Mark preview as used
+    this.style.display = "none"; // Hide button after first use
+});
+
+// Reset button visibility when a new level starts
+function showButton(level) {
+    
+    hasPreviewed = false; // Reset preview status
+    
+    // Ensure the preview button visibility logic is applied for each level
+    if (!hasPreviewed) {
+        
+    previewButton.style.display = ""; // Make sure the button is visible for the new level
+      }
+    // You can add any additional logic here for level transitions, such as updating the UI or handling level state
+}
+
+
+
+
+

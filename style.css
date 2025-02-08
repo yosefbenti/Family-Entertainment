@@ -1,135 +1,391 @@
-#mainContainer{
-    height: 100vh;
-    width: 100vw;
-    margin-top: 10px;
-    display: flex;
-    gap: 5px;
-}
-#headerContainer{display: flex;
-flex-direction: column;
-align-items: center;
-gap: 5px;
-}
-#leftContainer{display: flex;
-               flex-direction:column;
-               width: 60px;
-               gap: 5px;}
-#bottomContainer{display: flex;
- flex-direction: column;}
 
- #family{
-    writing-mode: vertical-rl;
-            text-orientation: mixed;
-            font-size: xx-large;
-            color: green;
-            margin-right: 5px;
-            margin-top: 25px;
- }
- #level{ 
-    background-color: green;  /* Green background */
-    color: white;             /* White text color */
-    border-radius: 50%;       /* Circular shape */
-    padding: 10px 10px;       /* Padding for the circle size */
-    text-align: center;       /* Center align the text */
-    font-weight: bold;        /* Make text bold */
-    display: inline-block;    /* Allows the text to wrap inside the circle */
-    margin: 0;
-}
-#familyName{
-    background-color: green;  /* Green background */
-    color: white;             /* White text color */
-    border-radius: 50%;       /* Circular shape */
-    padding: 10px 10px;       /* Padding for the circle size */
-    text-align: center;       /* Center align the text */
-    font-weight: bold;        /* Make text bold */
-    display: inline-block;    /* Allows the text to wrap inside the circle */
-    margin: 0;
-}
-#timer{
-    background-color: green;  /* Green background */
-    color: white;             /* White text color */
-    border-radius: 50%;       /* Circular shape */
-    padding: 10px 20px;       /* Padding for the circle size */
-    text-align: center;       /* Center align the text */
-    font-weight: bold;        /* Make text bold */
-    display: inline-block;    /* Allows the text to wrap inside the circle */
-    margin: 0;
-    margin-left: 3px;
-}
 
-#familyIndicator{
- 
- height: 20px;
- margin: 0;
-}
-#familyIndicator1{
- 
-    height: 20px;
-    margin: 0;
-}
- #imageInput{
-    color: green;
- }
-
- #footer{
-    display: flex;
-    
- }
- #restartBtn{
-    height: 20px;
-    margin-left: 5px;
- }
- #solveButton{
-    height: 20px;
-    margin-left: 5px;
+#mainContainer {
+   height: 100vh;
+   width: 100vw;
+   margin-top: 2px;
+   display: flex;
+   gap: 10px;
+   justify-content: center;
+   align-items: center;
    
- }
- #resetGameBtn{
-    height: 20px;
-    margin-left: 5px;
-    
- }
- #resetBtn{
-    height: 20px;
-    margin-left: 5px;
-    
- }
- #message{
-    background-color: green;  /* Green background */
-    color: white;             /* White text color */
-    border-radius: 20%;       /* Circular shape */
-    padding: 10px 20px;       /* Padding for the circle size */
-    text-align: center;       /* Center align the text */
-    font-weight: bold;        /* Make text bold */
-    display: inline-block;    /* Allows the text to wrap inside the circle */
-    margin: 0;
- }
- #scoreDisplay{
-    background-color: green;  /* Green background */
-    color: white;             /* White text color */
-    border-radius: 50%;       /* Circular shape */
-    padding: 10px 20px;       /* Padding for the circle size */
-    text-align: center;       /* Center align the text */
-    font-weight: bold;        /* Make text bold */
-    display: inline-block;    /* Allows the text to wrap inside the circle */
-    margin: 0;
- }
- #familyName{
-    height: 20px;
-    margin-left: 5px;
- }
- #familynameInput{
-    height: 20px;
-    width: 70px;
-    margin-left: 5px;
- }
- span{
-    margin-left: 10px;
- }
-#playerMessage{
-    display: flex;
-    gap: 10px;
+   /* Gradient Background */
+   background: linear-gradient(135deg, #df74a9, #ff5f6d);
+   
+   /* Add a slight inner shadow for depth */
+   box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
+
+   /* Smooth transition for background */
+   transition: background 0.5s ease-in-out;
 }
-#solveButton{
-    margin-right: 15px;
+
+@keyframes smoothScale {
+   0%, 100% { transform: scale(1); }
+   50% { transform: scale(1.05); }
 }
+
+#headerContainer {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   gap: 10px;  /* Increased gap for better spacing */
+   padding: 15px;  /* Added padding for better structure */
+   width: 100%;  /* Ensures full-width alignment */
+}
+
+
+
+#leftContainer {
+   display: flex;
+   flex-direction: column;
+   width: 80px;  /* Adjusted for consistency in layout */
+   gap: 12px;  /* Adjusted for better spacing between elements */
+   align-items: center;  /* Centers content horizontally */
+   padding: 5px;  /* Added padding for a more balanced design */
+   background: linear-gradient(135deg, #df74a9, #ff5f6d);  /* Matching background gradient */
+   border-radius: 8px;  /* Rounded corners for consistency */
+   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);  /* Light shadow for depth */
+   opacity: 0.9;  /* Slight transparency */
+   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, opacity 0.3s ease-in-out;  /* Smooth transitions */
+}
+
+#leftContainer:hover {
+   transform: scale(1.05);  /* Slight enlargement on hover */
+   opacity: 1;  /* Full opacity on hover */
+   box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);  /* Stronger shadow on hover */
+}
+
+
+
+
+
+
+
+
+
+#level {
+   color: white;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   font-weight: bold;
+   text-align: center;
+   margin: 10px auto;
+   padding: 12px 25px;
+   font-size: 1.5rem;
+   border-radius: 8px;
+   
+   /* Inherit the same gradient as the container */
+   background: linear-gradient(135deg, #df74a9, #ff5f6d);
+   
+   /* Slight transparency to blend in */
+   opacity: 0.9;
+   
+   /* Smooth transition */
+   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, opacity 0.3s ease-in-out;
+   
+   /* Light glow effect */
+   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+   
+   /* Subtle animation */
+   animation: smoothScale 2s infinite alternate;
+}
+
+#level:hover {
+   transform: scale(1.1);
+   opacity: 1; /* Slight brightness increase on hover */
+   box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes smoothScaleScore {
+   0%, 100% { transform: scale(1); }
+   50% { transform: scale(1.05); }
+}
+
+#scoreDisplay {
+   color: white;  /* White text color */
+   display: flex;
+   align-items: center;  /* Center vertically */
+   justify-content: center;  /* Center horizontally */
+   font-weight: bold;
+   text-align: center;
+   margin: 10px auto;
+   padding: 12px 25px;  /* Same padding as #level */
+   font-size: 1.5rem;    /* Same font size as #level */
+   border-radius: 8px;   /* Rounded corners like #level */
+   
+   /* Matching background as #level */
+   background: linear-gradient(135deg, #df74a9, #ff5f6d);
+   opacity: 0.9;  /* Slight transparency to match the flow */
+   
+   /* Smooth transition and subtle shadow */
+   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, opacity 0.3s ease-in-out;
+   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+   
+   /* Animation similar to #level */
+   animation: smoothScaleScore 2s infinite alternate;
+}
+
+#scoreDisplay:hover {
+   transform: scale(1.1);  /* Slight enlargement on hover */
+   opacity: 1;  /* Full opacity on hover */
+   box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);  /* Stronger shadow on hover */
+}
+
+@keyframes smoothScaleTimer {
+   0%, 100% { transform: scale(1); }
+   50% { transform: scale(1.05); }
+}
+
+#timer {
+   color: white;  /* White text color */
+   display: flex;
+   align-items: center;  /* Center vertically */
+   justify-content: center;  /* Center horizontally */
+   font-weight: bold;
+   text-align: center;
+   margin: 10px auto;
+   padding: 12px 25px;  /* Same padding as #level */
+   font-size: 1.5rem;    /* Same font size as #level */
+   border-radius: 50%;   /* Circular shape */
+   
+   /* Matching background gradient */
+   background: linear-gradient(135deg, #df74a9, #ff5f6d);
+   opacity: 0.9;  /* Slight transparency */
+   
+   /* Smooth transition and subtle shadow */
+   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, opacity 0.3s ease-in-out;
+   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+   
+   /* Animation for smooth scaling */
+   animation: smoothScaleTimer 2s infinite alternate;
+}
+
+#timer:hover {
+   transform: scale(1.1);  /* Slight enlargement on hover */
+   opacity: 1;  /* Full opacity on hover */
+   box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);  /* Stronger shadow on hover */
+}
+
+@keyframes smoothScaleIndicator {
+   0%, 100% { transform: scale(1); }
+   50% { transform: scale(1.05); }
+}
+
+#familyIndicator, #familyIndicator1 {
+   background: linear-gradient(135deg, #df74a9, #ff5f6d);  /* Matching gradient background */
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   margin: 10px auto;
+   padding: 8px 16px;  /* Padding for consistency */
+   font-size: 1.2rem;  /* Font size for readability */
+   color: white;  /* White text color */
+   font-weight: bold;  /* Bold text */
+   border-radius: 50%;  /* Circular shape */
+   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, opacity 0.3s ease-in-out;
+   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);  /* Light shadow */
+   opacity: 0.9;  /* Slight transparency */
+   animation: smoothScaleIndicator 2s infinite alternate;  /* Smooth scaling animation */
+}
+
+#familyIndicator:hover, #familyIndicator1:hover {
+   transform: scale(1.1);  /* Slight enlargement on hover */
+   opacity: 1;  /* Full opacity on hover */
+   box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);  /* Stronger shadow on hover */
+}
+
+#familyIndicator {
+   width: 20px;  /* Set fixed width */
+   height: 20px;  /* Set fixed height */
+}
+
+#familyIndicator1 {
+   width: 30px;  /* Set slightly larger width */
+   height: 30px;  /* Set slightly larger height */
+}
+
+@keyframes smoothScaleFamilyName {
+   0%, 100% { transform: scale(1); }
+   50% { transform: scale(1.05); }
+}
+
+#familyName {
+   color: white;  /* White text color */
+   display: flex;
+   align-items: center;  /* Center vertically */
+   justify-content: center;  /* Center horizontally */
+   font-weight: bold;
+   text-align: center;
+   margin: 10px auto;
+   padding: 12px 25px;  /* Padding for consistency with #level */
+   font-size: 1.5rem;    /* Same font size as #level */
+   border-radius: 8px;   /* Rounded corners */
+   
+   /* Matching background gradient */
+   background: linear-gradient(135deg, #df74a9, #ff5f6d);
+   opacity: 0.9;  /* Slight transparency */
+   
+   /* Smooth transition and subtle shadow */
+   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, opacity 0.3s ease-in-out;
+   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+   
+   /* Animation for smooth scaling */
+   animation: smoothScaleFamilyName 2s infinite alternate;
+   width: 16px;  /* Set fixed width */
+   height: 56px;  /* Set fixed height */
+   border-radius: 50%;  /* Circular shape */
+}
+
+#familyName:hover {
+   transform: scale(1.1);  /* Slight enlargement on hover */
+   opacity: 1;  /* Full opacity on hover */
+   box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);  /* Stronger shadow on hover */
+}
+
+#family {
+   writing-mode: vertical-rl;
+   text-orientation: mixed;
+   font-size: xx-large;
+   color: rgb(14, 63, 223);
+   margin-right: 5px;
+   margin-top: 25px;
+   width: 20px;
+   font-weight: bold;
+   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+   transition: transform 0.5s ease-in-out, color 0.5s ease-in-out;
+
+   /* Animation */
+   animation: bounce 1.5s infinite alternate ease-in-out;
+}
+
+#family:hover {
+   transform: scale(1.2);
+   color: rgba(234, 234, 8, 0.866);
+}
+
+@keyframes bounce {
+   0% {
+       transform: translateY(0);
+   }
+   100% {
+       transform: translateY(-10px);
+   }
+}
+
+#bottomContainer {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;  /* Centers content vertically */
+   align-items: center;  /* Centers content horizontally */
+   gap: 10px;  /* Consistent spacing */
+   padding: 10px;  /* Ensures spacing around elements */
+   width: 100%;  /* Takes full width */
+}
+
+
+
+
+
+#footer {
+   display: flex;
+   flex-wrap: wrap;  /* Allows elements to wrap when there's limited space */
+   justify-content: flex-start;  /* Align elements to the left */
+   align-items: center;  /* Align elements vertically at the center */
+   gap: 10px;  /* Reduced gap between elements for closeness */
+   padding: 10px;  /* Less padding for a more compact layout */
+   background: linear-gradient(135deg, #ff5f6d, #df74a9);  /* Matching gradient background */
+   box-shadow: 0px -4px 10px rgba(0, 0, 0, 0.2);  /* Light shadow for depth */
+   border-radius: 12px;  /* Rounded corners */
+   width: 100%;  /* Full width */
+   height: auto;  /* Let the height adjust based on content */
+   min-height: 80px;  /* Set a minimum height for the footer */
+   opacity: 0.95;  /* Slight transparency */
+   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;  /* Smooth transitions */
+}
+
+#footer:hover {
+   transform: scale(1.05);  /* Slight scaling on hover */
+   opacity: 1;  /* Full opacity on hover */
+   box-shadow: 0px -6px 12px rgba(0, 0, 0, 0.3);  /* Stronger shadow on hover */
+}
+
+#footer button, #footer input, #footer label {
+   font-size: 14px;  /* Smaller font size for a tighter fit */
+   padding: 8px 15px;  /* Reduced padding for compactness */
+   margin: 5px 0;  /* Reduced margin between elements */
+   border-radius: 8px;  /* Rounded corners for a smooth look */
+   border: none;  /* Remove border for buttons */
+   cursor: pointer;  /* Pointer cursor on hover */
+   transition: transform 0.3s ease-in-out;  /* Smooth transition for hover effect */
+}
+
+#footer button {
+   background-color: #ff5f6d;  /* Button background color */
+   color: white;  /* White text color */
+   font-weight: bold;  /* Make the text bold */
+   width: auto;  /* Allow button width to adjust automatically */
+   text-align: center;  /* Center the button text */
+}
+
+#footer button:hover {
+   transform: scale(1.05);  /* Slight scaling on hover */
+   background-color: #df74a9;  /* Change background color on hover */
+}
+
+#footer input[type="text"], #footer input[type="file"] {
+   width: 150px;  /* Slightly smaller width for input fields */
+   padding: 8px;  /* Add padding inside the input */
+   font-size: 14px;  /* Smaller font size */
+   border-radius: 8px;  /* Rounded corners for inputs */
+   border: 1px solid #ccc;  /* Border for input fields */
+   margin: 5px 0;  /* Reduced margin for input spacing */
+}
+
+#footer input[type="file"] {
+   padding: 8px 0;  /* Adjust padding for file input */
+}
+
+#footer label {
+   font-size: 14px;  /* Smaller font size for labels */
+   color: white;  /* White text color for labels */
+   margin: 5px 0;  /* Margin for spacing between label and input */
+}
+
+#playerMessage {
+   background-color: rgba(0, 0, 0, 0.6);  /* Semi-transparent background */
+   color: white;  /* White text color */
+   padding: 10px;  /* Padding for the message box */
+   border-radius: 10px;  /* Rounded corners for message box */
+   width: auto;  /* Auto width to fit content */
+   max-width: 600px;  /* Limit max-width for better responsiveness */
+   text-align: center;  /* Center-align message */
+   display: flex;  /* Use flexbox to align the message elements */
+   gap: 5px;  /* Reduced gap between message and the prefix */
+   flex-wrap: nowrap;  /* Prevent message from wrapping onto multiple lines */
+   white-space: nowrap;  /* Ensure message stays on a single line */
+}
+
+#playerMessage p {
+   display: inline-block;  /* Keeps message in one line */
+   margin: 0;  /* Removes default margin */
+   font-weight: bold;  /* Make the message text bold */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
