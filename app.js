@@ -6,7 +6,7 @@ const nextLevel = document.getElementById("#nextLevel")
 
 const canvas = document.createElement("canvas");
 canvas.width = 1400;  // Canvas width
-canvas.height = 750;  // Canvas height
+canvas.height = 700;  // Canvas height
 canvas.style.border = "4px solid pink";
 canvas.style.opacity = "1";
 container.appendChild(canvas);
