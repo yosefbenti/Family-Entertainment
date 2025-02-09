@@ -2,8 +2,9 @@ const container = document.querySelector("#container");
 const imageInput = document.querySelector("#imageInput");
 const solveButton = document.querySelector("#solveButton");
 //const resetBtn = document.getElementById("resetBtn");
-const nextLevel = document.getElementById("#nextLevel")
-
+const restartBtn = document.getElementById("restartBtn");
+const nextLevel = document.getElementById("nextLevel")
+const resetGameBtn = document.getElementById("resetGameBtn")
 const canvas = document.createElement("canvas");
 canvas.width = 1400;  // Canvas width
 canvas.height = 700;  // Canvas height
@@ -12,9 +13,9 @@ canvas.style.opacity = "1";
 container.appendChild(canvas);
 
 const ctx = canvas.getContext("2d");
+//nextLevel.disabled = true;
 
-
-
+solveButton.style.display = 'none';
 
 let isPuzzleSolved = false;  // Flag to track if the puzzle is solved manually
 
@@ -114,9 +115,11 @@ function resetGame() {
     //startLevel();  // Start the level timer
 }
 
+
 // Add event listener to the reset game button
-document.getElementById("resetGameBtn").addEventListener("click", () => {
+ document.getElementById("resetGameBtn").addEventListener("click", () => {
     resetGame();  // Reset everything to level 1
+    imageInput.disabled = false;
 });
 
 
@@ -151,11 +154,14 @@ function winLevel() {
 document.getElementById("nextLevel").addEventListener("click", () => {
     if (currentLevel < 4) {
         currentLevel++; // Move to the next level
+       
         document.getElementById("message").innerText = "";
         setLevel(currentLevel); // Update the game with new level settings
+         imageInput.disabled = false;
     } else {
         document.getElementById("message").innerText = `እንኳን ደስ አሎት! ሁሉንም ዙሮች አልቀዋልአልቀዋል! ጠቅላላ ውጤት: ${score}`;
         document.getElementById("nextLevel").style.display = "none"; // Hide next level button after completing all levels
+        resetGameBtn.style.display = 'block'
     }
 });
 
@@ -188,6 +194,7 @@ function restartLevel() {
 
 // Initialize game state after level selection
 function startGame() {
+    imageInput.disabled = false;
     isPuzzleSolved = false;  // Reset the solved state every time a new game starts
     pieces = [];             // Clear the pieces
     drawPieces();            // Redraw the pieces on the canvas
@@ -283,13 +290,19 @@ while (!validPositionFound) {
 return { x: randomX, y: randomY };
 }
 
+nextLevel.style.display = 'none'
+restartBtn.style.display = 'none'
+resetGameBtn.style.display = 'none'
 imageInput.addEventListener("change", (event) => {
     const file = event.target.files[0];
     if (!file) return;
 
     // Clear the file input to allow the user to upload the same image again if needed
     imageInput.value = '';
-
+    
+    nextLevel.style.display = 'none'
+    resetGameBtn.style.display = 'none'
+    imageInput.disabled = true;
     // Clear the canvas and reset game state before starting a new game
     ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear the canvas
     pieces = [];  // Clear previous pieces
@@ -326,6 +339,7 @@ imageInput.addEventListener("change", (event) => {
             drawPieces();  // Draw the pieces after loading the image
             startLevel();  // Start the timer and game when the image is loaded and the puzzle starts
             showButton()
+          
         };
         img.src = e.target.result;
     };
@@ -434,6 +448,7 @@ if (allCorrect && !isPuzzleSolved) {
             alert(`ዙር ${currentLevel} አልቋል !`);
             winLevel()
             if (currentLevel < 4) {  // Move to the next level
+                
                 currentLevel++;
                 setLevel(currentLevel);
                 startGame();
@@ -526,7 +541,8 @@ function failLevel() {
     
     document.getElementById("message").innerText = "ግዜው አልቋል! ወደ ቀጣይ ዙር የሚለውን ማስፈንጠሪያ ይጫኑ.";
     document.getElementsByClassName("customImage").innerText ="block";
-    document.getElementById("restartBtn").style.display = "block";
+    //document.getElementById("restartBtn").style.display = "block";
+    document.getElementById("restartBtn").style.display = "none";
     document.getElementById("nextLevel").style.display = "block"; // Show Next Level button after failure
 }
 
