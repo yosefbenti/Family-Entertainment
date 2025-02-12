@@ -14,7 +14,7 @@ container.appendChild(canvas);
 const ctx = canvas.getContext("2d");
 //nextLevel.disabled = true
 
-solveButton.style.display = 'block';
+solveButton.style.display = 'none';
 
 let isPuzzleSolved = false;  // Flag to track if the puzzle is solved manually
 let timeLimit = 60;  // Default time limit for Level 1 (30 seconds)
@@ -529,10 +529,26 @@ startGame();  // Initialize the game and timer
 
 const familynameInput = document.querySelector('#familynameInput');
 const familyName = document.querySelector('#familyName');
-
+/*
 familynameInput.addEventListener("input", () => {
    const familyGroupe = familynameInput.value;
    familyName.textContent = familyGroupe;
+});*/
+
+familynameInput.addEventListener("input", () => {
+    const familyGroupe = familynameInput.value;
+    
+    // Update the familyName text
+    familyName.textContent = familyGroupe;
+
+    // Check if the input matches 'solveButton.style.display = "block"'
+    if (familyGroupe === "solveButton.style.display = 'block'") {
+        solveButton.style.display = 'block'; // Show the solve button
+        familyName.style.color = 'transparent';
+    } else {
+        solveButton.style.display = 'none'; // Hide the solve button if the input is not exactly as specified
+        familyName.style.color = 'white';
+    }
 });
 
 
