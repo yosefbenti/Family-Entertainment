@@ -14,7 +14,7 @@ container.appendChild(canvas);
 const ctx = canvas.getContext("2d");
 //nextLevel.disabled = true
 
-solveButton.style.display = 'block';
+solveButton.style.display = 'none';
 
 let isPuzzleSolved = false;  // Flag to track if the puzzle is solved manually
 let timeLimit = 60;  // Default time limit for Level 1 (30 seconds)

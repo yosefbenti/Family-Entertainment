@@ -390,6 +390,11 @@ html, body {
     }
 }
 
+#icon{
+    border-radius: 50%;
+}
+
+
 /*
 function newMessage() {
     imageInput.disabled = true;
