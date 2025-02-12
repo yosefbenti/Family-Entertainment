@@ -14,7 +14,7 @@ container.appendChild(canvas);
 const ctx = canvas.getContext("2d");
 //nextLevel.disabled = true
 
-solveButton.style.display = 'none';
+solveButton.style.display = 'block';
 
 let isPuzzleSolved = false;  // Flag to track if the puzzle is solved manually
 let timeLimit = 60;  // Default time limit for Level 1 (30 seconds)
@@ -276,16 +276,29 @@ return { x: randomX, y: randomY };
 nextLevel.style.display = 'none'
 restartBtn.style.display = 'none'
 resetGameBtn.style.display = 'none'
+
+// Set correct image dimensions (for example 700x700)
+const requiredWidth = 700;
+const requiredHeight = 700;
+
 imageInput.addEventListener("change", (event) => {
     const file = event.target.files[0];
     if (!file) return;
 
+     // Check if the file is an image
+     const fileType = file.type.split('/')[0];
+     if (fileType !== 'image') {
+         alert("Please upload a valid image file.");
+         imageInput.value = ''; // Clear the file input
+         return;
+     }
     // Clear the file input to allow the user to upload the same image again if needed
     imageInput.value = '';
-    
-    nextLevel.style.display = 'none'
-    resetGameBtn.style.display = 'none'
+
+    nextLevel.style.display = 'none';
+    resetGameBtn.style.display = 'none';
     imageInput.disabled = true;
+
     // Clear the canvas and reset game state before starting a new game
     ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear the canvas
     pieces = [];  // Clear previous pieces
@@ -298,6 +311,15 @@ imageInput.addEventListener("change", (event) => {
         
         img = new Image();
         img.onload = function () {
+            // Check if the image size matches the required dimensions
+            if (img.width !== requiredWidth || img.height !== requiredHeight) {
+                alert(`Please upload an image of size ${requiredWidth}x${requiredHeight}.`);
+                
+                // Enable the image input again for the user to upload a new image
+                imageInput.disabled = false;
+                return; // Exit the function if the image size is incorrect
+            }
+
             pieceWidth = img.width / cols;
             pieceHeight = img.height / rows;
             pieces = [];
@@ -317,11 +339,10 @@ imageInput.addEventListener("change", (event) => {
                     });
                 }
             }
-            
 
             drawPieces();  // Draw the pieces after loading the image
             startLevel();  // Start the timer and game when the image is loaded and the puzzle starts
-            showButton()
+            showButton();  // Show the appropriate button (if needed)
           
         };
         img.src = e.target.result;
