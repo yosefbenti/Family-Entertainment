@@ -389,3 +389,34 @@ html, body {
         font-size: 0.9em; /* Further reduce size on small screens */
     }
 }
+
+/*
+function newMessage() {
+    imageInput.disabled = true;
+    const newWindow = document.createElement("button");
+    
+    // Set button styles
+    newWindow.style.width = "400px";
+    newWindow.style.height = "100px";
+    newWindow.style.background = "135deg, #749fdf, #ff5f6d";
+    newWindow.style.position = "fixed";
+    newWindow.style.top = "50%";
+    newWindow.style.left = "50%";
+    newWindow.style.transform = "translate(-50%, -50%)";
+    newWindow.style.border = "none";
+    newWindow.style.fontSize = "18px";
+    newWindow.style.cursor = "pointer";
+    newWindow.style.borderRadius = "5px "
+    // Set button text
+    newWindow.textContent = `ዙር ${currentLevel} ተጠናቋል ! , ! Close me!`;
+    
+    
+    // Add click event to remove button
+    newWindow.onclick = function () {
+        document.body.removeChild(newWindow);
+        imageInput.disabled = false;
+    };
+
+    // Append button to the document
+    document.body.appendChild(newWindow);
+}*/
