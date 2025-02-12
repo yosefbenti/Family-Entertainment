@@ -288,7 +288,7 @@ imageInput.addEventListener("change", (event) => {
      // Check if the file is an image
      const fileType = file.type.split('/')[0];
      if (fileType !== 'image') {
-         alert("Please upload a valid image file.");
+         alert("ያስገብት ምስል ትክክል አይደለም ! ትክክለኛ የ ስእል ምስል ያስገብ !.");
          imageInput.value = ''; // Clear the file input
          return;
      }
@@ -313,7 +313,7 @@ imageInput.addEventListener("change", (event) => {
         img.onload = function () {
             // Check if the image size matches the required dimensions
             if (img.width !== requiredWidth || img.height !== requiredHeight) {
-                alert(`Please upload an image of size ${requiredWidth}x${requiredHeight}.`);
+                alert(`ትክክለኛ የ ስእል ቁመትና ርዝመት ያስገብ ${requiredWidth}x${requiredHeight}.`);
                 
                 // Enable the image input again for the user to upload a new image
                 imageInput.disabled = false;
