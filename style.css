@@ -40,9 +40,9 @@ html, body {
 #leftContainer {
     background: linear-gradient(135deg, #749fdf, #ff5f6d);  /* Gradient background */
     border-radius: 15px;
-    padding: 20px;
-    width: 100%;
-    margin-top: 20px;
+    padding: 2px;
+    width: 80px;
+    margin-top: 10px;
     margin-left: -10px;
    
     box-sizing: border-box;
@@ -66,12 +66,6 @@ html, body {
     }
 }
 
-#level {
-    font-size: 22px;
-    font-weight: bold;
-    color: #fff;
-    margin-bottom: 10px;
-}
 
 #scoreDisplay {
     font-size: 24px;
@@ -96,26 +90,14 @@ html, body {
     margin-top: 10px;
 }
 
-#familyName {
-    font-size: 28px;
-    font-weight: bold;
-    color: #fff;
-    margin-top: 5px;
-    text-transform: uppercase;
-}
-
-/* Glow effect for the family name */
-#familyName {
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.6), 0 0 30px rgba(255, 255, 255, 0.4);
-}
 
 #familyIndicator1 {
     font-size: 18px;
     font-weight: 600;
     color: #fff;
     display: inline-block;
-    margin-top: 5px;
-    font-style: italic;
+    margin-top: 10px;
+    
 }
 
 /* Responsive Design */
@@ -168,8 +150,13 @@ html, body {
     writing-mode: vertical-rl;
     text-orientation: upright;
     font-size: xx-large;
-    color: rgba(243, 176, 32, 0.966);
     
+
+    color: transparent;  /* Make text transparent */
+    background: linear-gradient(135deg, #b6580c, #726407);
+    -webkit-background-clip: text; 
+    -webkit-text-fill-color: transparent;
+
     margin: 2px auto; /* Centers horizontally */
     width: 40px;
     font-weight: bold;
@@ -210,26 +197,33 @@ html, body {
     font-weight: bold;
     text-align: center;
     margin: 10px auto;
-    padding: 1px 2px;
-    font-size: 1.0rem;
-    border-radius: 50%;
-    width: 90%;
-    height: 30px;
+    padding: 10px 20px;  /* Increased padding for better spacing */
+    font-size: 18px;
+    border-radius: 16px;
+    min-width: 10px;
+    height: auto;
     
-    /* Inherit the same gradient as the container */
-    background: linear-gradient(135deg, #df74a9, #ff5f6d);
+    /* Consistent background gradient */
+    background: linear-gradient(135deg, #b6580c, #726407);
+    opacity: 0.9;  /* Slight transparency */
     
-    /* Slight transparency to blend in */
-    opacity: 0.9;
-    
-    /* Smooth transition */
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    /* Smooth transition effects */
+    transition: transform 0.3s ease-in-out, 
+                box-shadow 0.3s ease-in-out, 
+                opacity 0.3s ease-in-out;
     
     /* Light glow effect */
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
     
     /* Subtle animation */
     animation: smoothScale 2s infinite alternate;
+    
+    /* Ensure text remains legible and properly spaced */
+    text-transform: uppercase;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 
+                 0 0 20px rgba(255, 255, 255, 0.6), 
+                 0 0 30px rgba(255, 255, 255, 0.4);
+
  }
  
  #level:hover {
@@ -253,10 +247,10 @@ html, body {
     margin: 10px auto;
     padding: 12px 25px;  /* Same padding as #level */
     font-size: 1.0rem;    /* Same font size as #level */
-    border-radius: 50%;   /* Rounded corners like #level */
+    border-radius: 16px;   /* Rounded corners like #level */
     
     /* Matching background as #level */
-    background: linear-gradient(135deg, #df74a9, #ff5f6d);
+    background: linear-gradient(135deg, #b6580c, #726407);
     opacity: 0.9;  /* Slight transparency to match the flow */
     
     /* Smooth transition and subtle shadow */
@@ -289,10 +283,10 @@ html, body {
     margin: 10px auto;
     padding: 12px 25px;  /* Same padding as #level */
     font-size: 1.0rem;    /* Same font size as #level */
-    border-radius: 50%;   /* Circular shape */
+    border-radius: 16px;   /* Circular shape */
     
     /* Matching background gradient */
-    background: linear-gradient(135deg, #df74a9, #ff5f6d);
+    background: linear-gradient(135deg, #b6580c, #726407);
     opacity: 0.9;  /* Slight transparency */
     
     /* Smooth transition and subtle shadow */
@@ -322,24 +316,34 @@ html, body {
     justify-content: center;  /* Center horizontally */
     font-weight: bold;
     text-align: center;
-    margin: 10px auto;
-    padding: 12px 20px;  /* Padding for consistency with #level */
-    font-size: 1.0rem;    /* Same font size as #level */
-    border-radius: 8px;   /* Rounded corners */
+    margin: 1px auto;
+    padding: 12px 20px;  /* Padding for consistency */
+    font-size: 1rem;  /* Maintain readability */
+    border-radius: 8px;  /* Rounded corners */
     
-    /* Matching background gradient */
-    background: linear-gradient(135deg, #df74a9, #ff5f6d);
+    /* Background gradient */
+    background: linear-gradient(135deg, #b6580c, #726407);
     opacity: 0.9;  /* Slight transparency */
     
     /* Smooth transition and subtle shadow */
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, opacity 0.3s ease-in-out;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
     
-    /* Animation for smooth scaling */
+    /* Animation */
     animation: smoothScaleFamilyName 2s infinite alternate;
-    width: 16px;  /* Set fixed width */
-    height: 16px;  /* Set fixed height */
-    border-radius: 50%;  /* Circular shape */
+    
+    /* Adjust width and height */
+    min-width: 10px;  /* Adjusted for text content */
+    height: auto;  /* Allow dynamic height */
+    border-radius: 16px;  /* Softer rounded corners */
+    
+    /* Text styling */
+    font-size: 18px;
+    text-transform: uppercase;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 
+                 0 0 20px rgba(255, 255, 255, 0.6), 
+                 0 0 30px rgba(255, 255, 255, 0.4);
+
  }
  
  #familyName:hover {
@@ -402,7 +406,7 @@ html, body {
         font-size: xx-large;
         color: rgb(14, 63, 223);
         margin-right: 5px;
-        margin-top: 25px;
+        margin-top: 20px;
         width: 20px;
         font-weight: bold;
         text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
