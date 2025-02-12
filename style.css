@@ -37,6 +37,99 @@ html, body {
     align-items: flex-start; /* Align items to the start (left edge) */
 }
 
+#leftContainer {
+    background: linear-gradient(135deg, #749fdf, #ff5f6d);  /* Gradient background */
+    border-radius: 15px;
+    padding: 20px;
+    width: 100%;
+    margin-top: 20px;
+    box-sizing: border-box;
+    border: 2px solid 135deg, #749fdf, #ff5f6d;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);  /* Light shadow for depth */
+    text-align: center;
+    color: #fff;
+    font-family: 'Arial', sans-serif;
+    position: relative;
+    overflow: hidden;
+    animation: fadeIn 1s ease-out;  /* Smooth fade-in effect */
+}
+
+/* Animation for fading in */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+#level {
+    font-size: 22px;
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+#scoreDisplay {
+    font-size: 24px;
+    font-weight: bold;
+    color: #fffa;
+    padding: 5px;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+}
+
+#timer {
+    font-size: 22px;
+    color: #ffd700;
+    font-weight: bold;
+}
+
+#familyIndicator, #familyIndicator1 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #fff;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+#familyName {
+    font-size: 28px;
+    font-weight: bold;
+    color: #fff;
+    margin-top: 5px;
+    text-transform: uppercase;
+}
+
+/* Glow effect for the family name */
+#familyName {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.6), 0 0 30px rgba(255, 255, 255, 0.4);
+}
+
+#familyIndicator1 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #fff;
+    display: inline-block;
+    margin-top: 5px;
+    font-style: italic;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #leftContainer {
+        padding: 15px;
+        margin-top: 10px;
+    }
+
+    #level, #scoreDisplay, #timer, #familyIndicator, #familyName, #familyIndicator1 {
+        font-size: 18px;
+    }
+}
+
+
+
 /* Style for button, label, and input to align and style uniformly */
 #dcontainer button,
 #dcontainer label,
@@ -73,7 +166,8 @@ html, body {
     writing-mode: vertical-rl;
     text-orientation: upright;
     font-size: xx-large;
-    color: rgb(14, 63, 223);
+    color: rgba(243, 176, 32, 0.966);
+    
     margin: 2px auto; /* Centers horizontally */
     width: 40px;
     font-weight: bold;
@@ -92,7 +186,7 @@ html, body {
 
 #family:hover {
     transform: scale(1.2);
-    color: rgba(234, 234, 8, 0.866);
+    color: rgba(28, 202, 22, 0.885);
  }
  
  @keyframes bounce {
